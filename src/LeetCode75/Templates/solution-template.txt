@@ -1,0 +1,19 @@
+using System;
+
+namespace LeetCode75.Solutions
+{{
+    [TestCase("ab", "a", "b")]
+    [TestCase("cd", "c", "e")]
+    public class {0} : ISolution
+    {{
+        public object Run(params object[] args)
+        {{
+            return this.InternalRun((string)args[0], (string)args[1]);
+        }}
+
+        private object InternalRun(string a, string b)
+        {{
+            return string.Concat(a, b);
+        }}
+    }}
+}}

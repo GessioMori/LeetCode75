@@ -7,4 +7,22 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Spectre.Console" Version="0.51.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Solutions\" />
+    <Folder Include="Templates\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="last.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Templates\solution-template.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
