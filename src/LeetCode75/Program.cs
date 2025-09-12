@@ -1,4 +1,5 @@
 ﻿using Spectre.Console;
+using System.Collections;
 
 namespace LeetCode75;
 
@@ -109,6 +110,7 @@ internal class Program
             object result = solution.Run(test.Inputs);
 
             bool ok = (result is Array a && test.ExpectedOutput is Array e && a.Cast<object>().SequenceEqual(e.Cast<object>()))
+                      || (result is IEnumerable ie && test.ExpectedOutput is IEnumerable ee && ie.Cast<object>().SequenceEqual(ee.Cast<object>()))
                       || Equals(result, test.ExpectedOutput);
 
             Markup status = ok ? new Markup("[green]Passed[/]") : new Markup("[red]Failed[/]");
@@ -128,11 +130,12 @@ internal class Program
     {
         if (obj is Array arr)
         {
-            return "[" + string.Join(", ", arr.Cast<object>()) + "]";
+            return string.Join(", ", arr.Cast<object>());
         }
-        if (obj is object[] args)
+
+        if (obj is IEnumerable enumerable && obj.GetType().IsGenericType)
         {
-            return "[" + string.Join(", ", args) + "]";
+            return string.Join(", ", enumerable.Cast<object>());
         }
 
         return obj?.ToString() ?? "null";
