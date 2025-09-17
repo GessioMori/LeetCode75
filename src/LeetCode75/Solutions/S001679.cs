@@ -11,14 +11,14 @@ namespace LeetCode75.Solutions
 
         public int MaxOperations(int[] nums, int k)
         {
-            int[] sortedNums = [.. nums.Order()];
+            Array.Sort(nums);
             int left = 0;
-            int right = sortedNums.Length - 1;
+            int right = nums.Length - 1;
             int opCount = 0;
 
             while (left < right)
             {
-                int curSum = sortedNums[left] + sortedNums[right];
+                int curSum = nums[left] + nums[right];
 
                 if (curSum == k)
                 {
